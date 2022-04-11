@@ -1,0 +1,37 @@
+plugins {
+    id 'java-library'
+}
+
+repositories {
+    mavenCentral()
+}
+def selenideVersion = "6.3.5"
+def junitVersion = "5.8.2"
+def slfVersion = "1.7.36"
+def fakerVersion = "1.0.2"
+
+dependencies {
+    implementation 'org.jetbrains:annotations:20.1.0'
+    testImplementation(
+            "com.codeborne:selenide:$selenideVersion",
+            "org.junit.jupiter:junit-jupiter:$junitVersion",
+            "org.slf4j:slf4j-simple:$slfVersion",
+            "com.github.javafaker:javafaker:$fakerVersion",
+            "com.googlecode.libphonenumber:libphonenumber:8.12.11"
+    )
+}
+
+compileJava {
+    options.encoding = 'UTF-8'
+}
+compileTestJava {
+    options.encoding = 'UTF-8'
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = "UTF-8"
+}
+
+test {
+    useJUnitPlatform()
+}
