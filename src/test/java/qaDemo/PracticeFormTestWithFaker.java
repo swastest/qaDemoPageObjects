@@ -5,29 +5,49 @@ import com.github.javafaker.Faker;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import pages.FormTestWithFakerPageObjects;
+import pages.components.CalendarComponent;
+import utils.enums.Gender;
+import utils.enums.Hobbies;
+import utils.enums.States;
+import utils.enums.Subjects;
+import utils.enums.randoming.Randoming;
+
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Random;
 
 import static java.lang.String.format;
 
 public class PracticeFormTestWithFaker {
     FormTestWithFakerPageObjects formPO = new FormTestWithFakerPageObjects();
+    Randoming randoming = new Randoming();
+    // CalendarComponent calendar = new CalendarComponent();
 
-    Faker faker = new Faker();
+
+    Faker faker = new Faker(); //https://github.com/DiUS/java-faker
+
+//    Calendar calendar = Calendar.getInstance();  //get day, month etc from date  https://www.baeldung.com/java-year-month-day
+//    Date dateOfBirth = faker.date().birthday();
+//        calendar.setTime(dateOfBirth);
+
     String firstName = faker.name().firstName(),
             lastName = faker.name().lastName(),
             email = faker.internet().emailAddress(),
             tel = faker.numerify("##########"),
-            subjectsInput = "Hindi",
-            gender = "Male",
-    // gender = StringUtils.capitalize(faker.dog().gender());
-    hobby = "Reading",
+//    String phone = faker.number().digits(10), - еще вариант
+            subjectsInput = Subjects.values()[new Random().nextInt(Subjects.values().length)].toString(),
+            gender = Gender.values()[new Random().nextInt(Gender.values().length)].toString(),
+            hobby = Hobbies.values()[new Random().nextInt(Hobbies.values().length)].toString(),
             currentAddress = faker.address().fullAddress(),
-            state = "Uttar Pradesh",
+            state = "NCR",
             file = "123.jpg",
-            city = "Merrut",
-            responseHeader = "Thanks for submitting the form";
-    //birthDay = faker.date().birthday().toString().
-    String expectedFullName = format("%s %s", firstName, lastName);
-    String fullStateCity = format("%s %s", state, city);
+            city = "Delhi",
+            responseHeader = "Thanks for submitting the form",
+
+      //  dateOfBirthDay = String.valueOf(calendar.get(Calendar.DAY_OF_MONTH)),
+    //birthDay = faker.date().birthday().toString(). - не работает
+            expectedFullName = format("%s %s", firstName, lastName),
+            fullStateCity = format("%s %s", state, city);
 
     // String dataBirth
 

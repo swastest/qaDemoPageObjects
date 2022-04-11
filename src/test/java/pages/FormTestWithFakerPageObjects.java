@@ -10,7 +10,7 @@ import static com.codeborne.selenide.Selenide.open;
 
 public class FormTestWithFakerPageObjects {
 
-    CalendarComponent calendar = new CalendarComponent();
+    CalendarComponent calendarComponent = new CalendarComponent();
     //locators
     SelenideElement firstNameInput = $("#firstName"),
             lastNameInput= $("#lastName"),
@@ -65,7 +65,7 @@ public class FormTestWithFakerPageObjects {
     }
     public FormTestWithFakerPageObjects setBirthDate (String day, String month, String year){
         dateOfBirthInput.click();
-        calendar.setData(day, month, year);
+        calendarComponent.setData(day, month, year);
 
         return this;
     }
