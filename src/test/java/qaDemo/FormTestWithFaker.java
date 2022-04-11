@@ -5,20 +5,16 @@ import com.github.javafaker.Faker;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import pages.FormTestWithFakerPageObjects;
-import pages.components.CalendarComponent;
 import utils.enums.Gender;
 import utils.enums.Hobbies;
-import utils.enums.States;
 import utils.enums.Subjects;
 import utils.enums.randoming.Randoming;
 
-import java.util.Calendar;
-import java.util.Date;
 import java.util.Random;
 
 import static java.lang.String.format;
 
-public class PracticeFormTestWithFaker {
+public class FormTestWithFaker {
     FormTestWithFakerPageObjects formPO = new FormTestWithFakerPageObjects();
     Randoming randoming = new Randoming();
     // CalendarComponent calendar = new CalendarComponent();
@@ -39,9 +35,9 @@ public class PracticeFormTestWithFaker {
             gender = Gender.values()[new Random().nextInt(Gender.values().length)].toString(),
             hobby = Hobbies.values()[new Random().nextInt(Hobbies.values().length)].toString(),
             currentAddress = faker.address().fullAddress(),
-            state = "NCR",
+            state = randoming.getState(),
             file = "123.jpg",
-            city = "Delhi",
+            city = randoming.getCity(state),
             responseHeader = "Thanks for submitting the form",
 
       //  dateOfBirthDay = String.valueOf(calendar.get(Calendar.DAY_OF_MONTH)),

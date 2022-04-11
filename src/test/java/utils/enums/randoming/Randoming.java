@@ -52,7 +52,7 @@ public class Randoming {
             case "Rajasthan":
                 return RajCities.values()[new Random().nextInt(RajCities.values().length)].toString();
         }
-        return "";  // - Что тут вернуть? не работает так
+        return "Delhi";  // и указать в тесте, в value "state"
     }
 
 
