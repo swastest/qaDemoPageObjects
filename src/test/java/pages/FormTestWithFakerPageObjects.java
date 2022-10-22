@@ -111,7 +111,7 @@ public class FormTestWithFakerPageObjects {
     }
 
     public FormTestWithFakerPageObjects checkTableHeaderResponse (String text) {
-        headerTableResponse.shouldHave(text("Thanks for submitting the form"));
+        headerTableResponse.shouldHave(text(text));
         return this;
 
     }
